@@ -381,6 +381,30 @@ variable "eks_nodegroup_user_data" {
   default     = null
 }
 
+variable "eks_nodegroup_volume_size" {
+  type        = number
+  description = "The size of volume to provision for each node group member"
+  default     = 20
+}
+
+variable "eks_nodegroup_volume_type" {
+  type        = string
+  description = "The type of volume to provision for each node group member"
+  default     = "gp3"
+}
+
+variable "eks_nodegroup_volume_iops" {
+  type        = number
+  description = "The iops of the volume provisioned for each node group member"
+  default     = 3000
+}
+
+variable "eks_nodegroup_volume_throughput" {
+  type        = number
+  description = "The throughput of the volume provisioned for each node group member"
+  default     = 125
+}
+
 #------------------------------------------------------------------------------
 # RDS Aurora PostgreSQL (database)
 #------------------------------------------------------------------------------
