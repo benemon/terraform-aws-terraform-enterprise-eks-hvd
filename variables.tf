@@ -383,25 +383,30 @@ variable "eks_nodegroup_user_data" {
 
 variable "eks_nodegroup_volume_size" {
   type        = number
-  description = "The size of volume to provision for each node group member"
+  description = "Size in GiB of root EBS volume for each EKS node group instance."
   default     = 20
 }
 
 variable "eks_nodegroup_volume_type" {
   type        = string
-  description = "The type of volume to provision for each node group member"
+  description = "Type of root EBS volume for each EKS node group instance. Only `gp3` is supported because the launch template always sets `iops` and `throughput`."
   default     = "gp3"
+
+  validation {
+    condition     = var.eks_nodegroup_volume_type == "gp3"
+    error_message = "Value must be `gp3`."
+  }
 }
 
 variable "eks_nodegroup_volume_iops" {
   type        = number
-  description = "The iops of the volume provisioned for each node group member"
+  description = "IOPS of root EBS volume for each EKS node group instance."
   default     = 3000
 }
 
 variable "eks_nodegroup_volume_throughput" {
   type        = number
-  description = "The throughput of the volume provisioned for each node group member"
+  description = "Throughput in MiB/s of root EBS volume for each EKS node group instance."
   default     = 125
 }
 

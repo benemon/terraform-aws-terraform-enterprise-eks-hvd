@@ -74,7 +74,7 @@ To change the root EBS volume attached to each worker node (defaults shown):
 
 ```hcl
 eks_nodegroup_volume_size       = 20    # GiB
-eks_nodegroup_volume_type       = "gp3"
+eks_nodegroup_volume_type       = "gp3" # only `gp3` is supported
 eks_nodegroup_volume_iops       = 3000
 eks_nodegroup_volume_throughput = 125   # MiB/s
 ```
